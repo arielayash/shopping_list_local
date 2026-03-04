@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="he" class="root_elem">
+<head>  
+    <meta charset='utf-8'>
+    <title>רשימת קניות</title>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <link rel="icon" href="./icon_small.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&family=Poppins:wght@100;200;300;400;600;700&family=Space+Mono&display=swap" rel="stylesheet">
+    <link rel='stylesheet' type='text/css' media='screen' href="./main.css">
+</head>
+<body>
+    <header class="enableBlur">
+        <h1>רשימת קניות</h1>
+        <input type="text" id="search_input" placeholder="חפש...">
+    </header>
+
+    <main class="enableBlur">
+<!--        <ul id="product_list">-->
+<!--        </ul>-->
+    </main>
+
+    <div id="add_menu" class="popup_menu">
+
+        <div id="add_menu_inputs">
+            <input type="text" id="add_prod_text" placeholder="הקלד מוצר...">
+
+            <input list="departments" name="department" id="add_prod_department" placeholder="בחר מחלקה">
+            <datalist id="departments">
+            </datalist>
+        </div>
+
+        <div id="add_menu_buttons">
+            <button type="button" id="insert_button">הכנס</button>
+            <button type="button" id="cancel_button">בטל</button>
+        </div>
+
+    </div>
+
+    <div id="delete_menu" class="popup_menu">
+        <p>
+            <button type="button" id="delete_marked_button">מחק מסומנים</button>
+        </p>
+
+        <p>
+            <button type="button" id="delete_all_button">מחק הכל</button>
+        </p>
+
+        <p>
+            <button type="button" id="cancel_delete_button">בטל</button>
+        </p>
+    </div>
+
+    <footer class="enableBlur">
+        <div id="clear_button">נקה</div>
+        <button type="button" id="add_button">הוסף</button>
+    </footer>
+
+
+     <script type="module" src="./shopping_list.js"></script>
+</body>
+</html>

@@ -1,0 +1,265 @@
+html {
+    font-family: 'Fredoka', sans-serif;
+    /* font-family: 'Poppins', sans-serif;
+    font-family: 'Space Mono', monospace;         */
+    text-align: right;
+    background: white;      
+    scroll-behavior: smooth;
+
+    --header_height: 12%;
+    --footer_height: 10%;
+}
+
+header {
+    position:fixed;   
+    right:0px;    
+    top: 5px;    
+    margin-top: 0px;
+    padding-top: 0px;    
+    height: max(var(--header_height), 80px);     
+    width: 100%;
+    max-width: 400px;      
+}
+
+main {
+    position: fixed;
+    top: max(var(--header_height), 80px);
+    right: 0px;
+    display: block;    
+    height: calc(100% - max(var(--header_height), 80px) - max(var(--footer_height), 80px));    
+    width: 100%;
+    max-width: 400px;      
+    overflow: auto;       
+    padding-right: 10px; 
+}
+
+ul {
+    display: block;   
+    padding-top: 0;     
+    margin-top: 0;
+}
+
+.department_name_text {
+    color: rgb(112, 122, 212);
+    font-size: 1.3rem;    
+}
+
+li {    
+    list-style-type: none;        
+    width: 100%;
+    display: inline-flex;
+    justify-content: right;
+    margin: 5px 0px;
+}
+
+.product_elem_text {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.1rem;        
+    display: inline-flex;
+    cursor: pointer;
+}
+
+.product_elem_edit_buttons_div {    
+    display: inline-flex;
+    position: absolute;
+    /* width: auto; */
+    height: 20px;
+        
+    @media only screen and (max-width: 400px){
+        left: 5%;
+    }
+
+    @media only screen and (min-width: 401px){
+        right: 380px;
+    }
+}
+
+.product_elem_pin_button {
+    max-width: 50%;
+    height: auto;    
+    margin-left: 15px;
+    cursor: pointer;
+}
+
+.product_elem_del_button {
+    max-width: 60%;
+    height: auto;    
+    cursor: pointer;
+}
+
+h1 {   
+    position: relative; 
+    right: 2%;
+    margin: 0px; 
+    margin-bottom: 5px;   
+    font-family: 'Fredoka', sans-serif;
+    font-weight: lighter;    
+    color: rgb(112, 122, 212);        
+    vertical-align: top;           
+}
+
+#search_input {        
+
+    @media only screen and (max-width: 400px){
+        display: block;
+        margin-left: auto;
+        margin-right: auto;    
+    }
+    
+    text-indent: 5%;    
+    border-radius: 15px;    
+    outline-color: gray;
+
+    width: 90%;
+    height: 30px;
+    max-width: 400px;
+    max-height: 30px;
+    box-shadow: 1px 1px 4px gray;
+    border: 1px solid gray;
+}
+
+footer {
+    position:fixed;   
+    right:0px;    
+    bottom:2px;
+    height: max(var(--footer_height), 80px);
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 400px;
+}
+
+#add_button {
+    color: white;
+    border: none;
+    background: rgb(112, 122, 212);
+    border-radius: 8px;
+    height: 80%;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#clear_button {
+    font-family: 'Fredoka', sans-serif;
+    font-size: 1.2rem;
+    color: gray;   
+    text-align: center;     
+    width: max-content;
+    margin: auto;
+    margin-bottom: 5px;    
+}
+
+.popup_menu {
+    display: none;
+    position: absolute;
+    
+    top: 30%;  
+    height: auto;
+    
+    --menu_width: min(400px, 80vw);    
+    width: var(--menu_width);
+    /* left: calc(100vw - var(--menu_width) / 2.0); */
+    left: max(10vw, 50vw - calc(0.5 * var(--menu_width)));
+        
+    /* justify-content: center;
+    align-items: center;
+    text-align: center;      */
+    
+    border-radius: 10px;
+    /* box-shadow: 0px 0px 4px gray; */    
+    background: rgba(255, 255, 255, 1.0);  
+    box-shadow: 2px 2px 2px 2px gray;    
+}
+
+#add_menu_buttons { 
+    display: block;       
+    position: absolute;
+    bottom: 10%;
+    left: 5%;
+}
+
+#add_menu_buttons button {
+    color: white;
+    border: none;
+    background: rgb(112, 122, 212);
+    border-radius: 5px;
+    height: 25%;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+#cancel_button {
+    background: rgb(163, 163, 163) !important;
+    box-shadow: 0px 1px 1px gray;
+    cursor: pointer;
+}
+
+/* #add_prod_text {
+    text-indent: 5%;    
+    border-radius: 8px;    
+    height: 30px;
+    max-width: 400px;
+    width: 90%;    
+    border: 1px solid gray;
+    margin-bottom: 60px;
+    margin-top: 10%;    
+    margin-right: 3%;
+} */
+
+#add_menu_inputs input {
+    text-indent: 5%;    
+    border-radius: 8px;    
+    height: 30px;
+    max-width: 400px;
+    width: 90%;    
+    border: 1px solid gray;
+    /* margin-bottom: 60px; */
+    /* margin-top: 10%;     */
+    margin-right: 3%;   
+}
+
+#add_prod_text {
+    margin-top: 10%;    
+    margin-bottom: 20px;
+}
+
+#add_prod_department {
+    margin-bottom: 70px;
+    direction: rtl;
+}
+
+
+input[type=text] {
+    direction: rtl;
+}
+
+input[type=text]:focus {
+    outline-color: rgb(114, 117, 148); 
+}
+
+#add_prod_department:focus {
+    outline-color: rgb(114, 117, 148); 
+}
+
+#delete_menu button {
+    width: 90%;
+    color: white;
+    border: none;
+    background: rgb(112, 122, 212);
+    border-radius: 8px;
+    height: 25%;
+    font-size: 1.5rem;
+    margin-right: 4%;
+    cursor: pointer;
+}
+
+.product_elem_edit_text {
+    outline-color: white !important;
+    border: 0px solid white !important;
+    font-size: 1.1rem;
+}
+
+.product_elem_edit_text:focus { 
+    border: 0px solid white !important;
+    font-size: 1.1rem;
+}
