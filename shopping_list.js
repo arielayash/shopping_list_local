@@ -164,7 +164,7 @@ function updateItem(itemId) {
                         
             document.getElementById(`product_elem_${itemId}`).remove();
 
-            if (gMsgStorage.getMessageIds() < 1) {
+            if (gMsgStorage.getMessageIds().length < 1) {
                 let clearBtn = document.getElementById('clear_button');        
                 clearBtn.style.color = "gray";
                 clearBtn.style.cursor = "default";
@@ -314,7 +314,7 @@ function addNewItem() {
 
 function clearAll() {
 
-    if (gMsgStorage.getMessageIds() < 1) {
+    if (gMsgStorage.getMessageIds().length < 1) {
         return;
     }
     
@@ -338,7 +338,7 @@ function clearAll() {
 }
 
 function clearChecked() {
-    if (gMsgStorage.getMessageIds() < 1) {
+    if (gMsgStorage.getMessageIds().length < 1) {
         return;
     }
     
@@ -364,7 +364,7 @@ function clearChecked() {
         document.getElementById(`product_elem_${msgId}`).remove();        
     }
     
-    if (gMsgStorage.getMessageIds() < 1) {
+    if (gMsgStorage.getMessageIds().length < 1) {
         let clearBtn = document.getElementById('clear_button');        
         clearBtn.style.color = "gray";
         clearBtn.style.cursor = "default";
@@ -471,10 +471,10 @@ async function init() {
 
     document.getElementById('clear_button').addEventListener(
         'click', 
-        () => {
-            if (gMsgStorage.getMessageIds() < 1) {
+        () => {                        
+            if (gMsgStorage.getMessageIds().length < 1) {
                 return;
-            }
+            }            
             _exitEditItemMode(gProductIdOnEdit);
             _openDeleteMenu();
         }
