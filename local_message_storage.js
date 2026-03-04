@@ -1,4 +1,4 @@
-import { IMessageStorage } from "./imessage_storage.js";
+import { IMessageStorage, MesssageContext } from "./imessage_storage.js";
 
 
 export class LocalMessageStorage extends IMessageStorage { 
@@ -127,7 +127,7 @@ export class LocalMessageStorage extends IMessageStorage {
 
     _loadFromStorage () {
         
-        let loadedDepartmentsJSON = window.localStorage.getItem("departments");    
+        let loadedDepartmentsJSON = window.localStorage.getItem("departments");
         if (loadedDepartmentsJSON === null) {
             console.log("No local storage was found");
             window.localStorage.clear();
@@ -141,15 +141,19 @@ export class LocalMessageStorage extends IMessageStorage {
             return;
         }
 
-        let messages = null;
-        let loadedMessagesJSON = window.localStorage.getItem("messages");    
+        let messages = {};
+        let loadedMessagesJSON = window.localStorage.getItem("messages");            
         if (loadedMessagesJSON != null) {
                     
-            messages = JSON.parse(loadedMessagesJSON);
-            if (messages === null) {
+            let messagesObj = JSON.parse(loadedMessagesJSON);
+            if (messagesObj === null) {
                 console.log("Error while parsing stored messages data - clear the storage");
                 window.localStorage.clear();
                 return;
+            }
+                        
+            for (const [msgId, msg] of Object.entries(messagesObj) ) {                                                                                        
+                messages[msgId] = Object.assign(new MesssageContext(), msg);
             }
             
             this._messages = messages;
@@ -162,8 +166,11 @@ export class LocalMessageStorage extends IMessageStorage {
         }
             
         if (Object.keys(departments).length > 0){
-            this,this._nextDepId = Math.max(...Object.keys(departments)) + 1;        
+            this._nextDepId = Math.max(...Object.keys(departments)) + 1;        
         }
         this._departments = departments;    
+
+        console.log("Found valid storage");
+        console.log(`this._nextDepId: ${this._nextDepId}\tthis._nextMsgId: ${this._nextMsgId}`);
     } 
 }
