@@ -47,7 +47,11 @@ export class LocalMessageStorage extends IMessageStorage {
             throw new Error(`Message with id ${id} is not exists in storage`);
         }
         
+        const depId = this._messages[id].departmentId;
+
         delete this._messages[id];
+
+        this._validateDepartments(depId);
 
         this._dumpToStorage();
 
@@ -164,13 +168,42 @@ export class LocalMessageStorage extends IMessageStorage {
         else {
             console.log("No messages on local storage were found");
         }
-            
-        if (Object.keys(departments).length > 0){
-            this._nextDepId = Math.max(...Object.keys(departments)) + 1;        
-        }
+
         this._departments = departments;    
+        this._validateDepartments();
+        
+        if (Object.keys(this._departments).length > 0){
+            this._nextDepId = Math.max(...Object.keys(this._departments)) + 1;        
+        }        
 
         console.log("Found valid storage");
         console.log(`this._nextDepId: ${this._nextDepId}\tthis._nextMsgId: ${this._nextMsgId}`);
     } 
+
+    _validateDepartments (departmentId = null) {
+        
+        if (departmentId != null) {            
+            if ( ! (departmentId in this._departments) ) {                
+                return;
+            }
+
+            let isFound = false;
+            for (const msg of Object.values(this._messages) ) {                
+                if (departmentId === msg.departmentId) {                    
+                    isFound = true;
+                    break;
+                }                
+            }
+
+            if ( ! isFound ) {                
+                delete this._departments[departmentId];
+            }
+
+            return;
+        }
+
+        for (let currDepartmentId in Object.keys(this._departments)) {
+            this._validateDepartments(Number(currDepartmentId));
+        }
+    }
 }
