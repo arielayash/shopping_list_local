@@ -101,6 +101,7 @@ function renderMessage(msgId, msg) {
 
 async function addItem(productField, departmentId, departmentName=null) {
 
+    departmentId = Number(departmentId);
     if (INVALID_DEPARTMENT_ID === departmentId) {
         // Create new department 
 

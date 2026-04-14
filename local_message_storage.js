@@ -182,7 +182,7 @@ export class LocalMessageStorage extends IMessageStorage {
 
     _validateDepartments (departmentId = null) {
         
-        if (departmentId != null) {            
+        if (departmentId !== null) {            
             if ( ! (departmentId in this._departments) ) {                
                 return;
             }
